@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/fsiwi-hka/IwIValidAPI/src"
 	"github.com/gorilla/mux"
@@ -21,7 +22,7 @@ func main() {
 	r := mux.NewRouter()
 	r.Use(src.LoggingMiddleware)
 	r.HandleFunc("/GetValidUsers", src.HandlerGetValidUser()).Methods("GET")
-
-	fmt.Println("Starting Server at :8080")
-	http.ListenAndServe(":9000", r)
+	var port string = ":" + os.Getenv("PORT")
+	fmt.Printf("Starting Server at %s", port)
+	http.ListenAndServe(port, r)
 }
