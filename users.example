@@ -1,0 +1,6 @@
+# Example users file
+# Add one username per line
+# Lines starting with # are comments and will be included in the output
+exampleuser1
+exampleuser2
+exampleuser3
