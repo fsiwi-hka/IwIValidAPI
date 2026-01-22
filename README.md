@@ -78,12 +78,12 @@ go mod download
 
 3. Create a `.env` file in the project root (see Configuration section below)
 
-4. Create a `users` file in the project root with valid usernames (one per line):
+4. Create a `users` file in the project root with valid usernames (8 char):
 
 ```
-user1
-user2
-user3
+ipsm1023
+lore2234
+sole3245
 ```
 
 ## Configuration

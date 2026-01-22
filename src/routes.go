@@ -1,10 +1,11 @@
 package src
 
 import (
-	"bufio"
 	"encoding/json"
 	"net/http"
 	"os"
+
+	"github.com/fsiwi-hka/IwIValidAPI/src/reader"
 )
 
 type BadResponse struct {
@@ -36,23 +37,10 @@ type GetValidUserResbody struct {
 
 func HandlerGetValidUser() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		OpenFile, err := os.Open("users")
+		users, err := reader.ReadUsersFromFile()
 		if err != nil {
 			CustomInternalError(w, "Error when Reading Current Valid Users")
-		}
-		defer OpenFile.Close()
-		scanner := bufio.NewScanner(OpenFile)
-
-		var users []string
-		i := 0
-		for scanner.Scan() {
-			line := scanner.Text()
-			users = append(users, line)
-			i++
-		}
-
-		if err := scanner.Err(); err != nil {
-			CustomInternalError(w, "Error when Reading Current Valid Users")
+			return
 		}
 		resBody := GetValidUserResbody{Users: users}
 		jsonResBody, err := json.Marshal(resBody)
