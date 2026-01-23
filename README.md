@@ -19,7 +19,7 @@ Retrieves the list of valid users.
 
 **Example Request:**
 ```bash
-curl -X GET https://api.users.iwi-hka./GetValidUsers \
+curl -X GET https://api.users.iwi-hka.de/GetValidUsers \
   -H "Authorization: your-secret-token-here"
 ```
 
